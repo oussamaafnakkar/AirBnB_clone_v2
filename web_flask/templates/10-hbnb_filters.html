@@ -1,53 +1,113 @@
-<!DOCTYPE html>
+CTYPE html>
 <HTML lang="en">
-  <HEAD>
-    <META charset="utf-8">
-    <TITLE>AirBnB clone</TITLE>
-    <LINK rel="stylesheet" href="../static/styles/reset.css">
-    <LINK rel="stylesheet" href="../static/styles/4-common.css">
-    <LINK rel="stylesheet" href="../static/styles/3-header.css">
-    <LINK rel="stylesheet" href="../static/styles/3-footer.css">
-    <LINK rel="stylesheet" href="../static/styles/6-filters.css">
-    <LINK rel="icon" href="../static/images/icon.png">
-  </HEAD>
-
-  <BODY>
-    <HEADER></HEADER>
-
-    <DIV class="container">
-      <SECTION class="filters">
-        <DIV class="locations">
-          <H3>States</H3>
-          <H4>&nbsp;</H4>
-          <DIV class="popover">
-            <UL>
-            {% for state in states.values()|sort(attribute="name") %}
-              <LI><STRONG>{{ state.name }}</STRONG>
-                <UL>
-                {% for city in state.cities|sort(attribute="name") %}
-                  <LI>{{ city.name }}</LI>
-                {% endfor %}
-                </UL>
-              </LI>
-            {% endfor %}
-            </UL>
-          </DIV>
-
-        </DIV><DIV class="amenities">
-          <H3>Amenities</H3>
-          <H4>&nbsp;</H4>
-          <UL class="popover">
-          {% for amenity in amenities.values()|sort(attribute="name") %}
-            <LI>{{ amenity.name }}</LI>
-          {% endfor %}
-          </UL>
-        </DIV>
-        <BUTTON>Search</BUTTON>
-      </SECTION>
-    </DIV>
-
-    <FOOTER>
-      Holberton School
-    </FOOTER>
-  </BODY>
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}" type="text/css">
+    </HEAD>
+    <BODY>
+        <HEADER class="clearfix">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" height="30px">
+                <h1>HBNB</h1>
+            </div>
+            <div class="filters">
+                <h2>Places</h2>
+                <div class="popover">
+                    <h3>States</h3>
+                    <div class="popover-content">
+                        {% for state in states %}
+                            <div class="popover-checkbox">
+                                <input type="checkbox" name="state" id="{{ state.id }}">
+                                <label for="{{ state.id }}">{{ state.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <h3>Amenities</h3>
+                    <div class="popover-content">
+                        {% for amenity in amenities %}
+                            <div class="popover-checkbox">
+                                <input type="checkbox" name="amenity" id="{{ amenity.id }}">
+                                <label for="{{ amenity.id }}">{{ amenity.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </HEADER>
+        <SECTION class="container">
+            <h2>Places</h2>
+            <div class="places">
+                <article>
+                    <div class="title_box">
+                        <h3>States</h3>
+                    </div>
+                    <div class="cities">
+                        {% for state in states %}
+                            <div class="popover-checkbox">
+                                <input type="checkbox" name="state" id="{{ state.id }}">
+                                <label for="{{ state.id }}">{{ state.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </article>
+                <article>
+                    <div class="title_box">
+                        <h3>Cities</h3>
+                    </div>
+                    <div class="cities">
+                        {% for city in cities %}
+                            <div class="popover-checkbox">
+                                <input type="checkbox" name="city" id="{{ city.id }}">
+                                <label for="{{ city.id }}">{{ city.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </article>
+                <article>
+                    <div class="title_box">
+                        <h3>Amenities</h3>
+                    </div>
+                    <div class="cities">
+                        {% for amenity in amenities %}
+                            <div class="popover-checkbox">
+                                <input type="checkbox" name="amenity" id="{{ amenity.id }}">
+                                <label for="{{ amenity.id }}">{{ amenity.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </article>
+            </div>
+        </SECTION>
+        <FOOTER class="clearfix">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" height="30px">
+                <h1>HBNB</h1>
+            </div>
+            <div class="footer_links">
+                <h2>Places</h2>
+                <div class="cities">
+                    {% for state in states %}
+                        <div class="popover-checkbox">
+                            <input type="checkbox" name="state" id="{{ state.id }}">
+                            <label for="{{ state.id }}">{{ state.name }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <h2>Amenities</h2>
+                <div class="cities">
+                    {% for amenity in amenities %}
+                        <div class="popover-checkbox">
+                            <input type="checkbox" name="amenity" id="{{ amenity.id }}">
+                            <label for="{{ amenity.id }}">{{ amenity.name }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </FOOTER>
+    </BODY>
 </HTML>
+
+
