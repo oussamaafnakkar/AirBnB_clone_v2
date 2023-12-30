@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Script that runs a Flask web application"""
+"""script that runs a Flask web application"""
 
 from flask import Flask, render_template
 from models import storage
@@ -16,9 +16,10 @@ def teardown_appcontext(exception):
 @app.route('/states_list', strict_slashes=False)
 def states():
     """List all states"""
-    states = storage.all("State")
+    states = storage.all(State)
     return render_template('7-states_list.html', title="States", states=states)
 
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
+
